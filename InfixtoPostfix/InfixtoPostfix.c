@@ -94,7 +94,12 @@ int EV(char* postfix) {        //postfix를 연산하는 EV함수
 			switch (token)        //token이 나타내는 연산자에 따라 다른 연산을 실행
 			{        //op2가 먼저 저장된 숫자로, op2 op1으로 계산을 진행
 			case '*': put(op2 * op1); break;        //연산 결과는 다음 연산을 위해 다시 stack에 저장한다
-			case '/': put(op2 / op1); break;
+			case '/': 
+				if (op1 == 0) {
+					printf("do not divide by zero");
+					break;
+				}
+				put(op2 / op1); break;
 			case '+': put(op2 + op1); break;
 			case '-': put(op2 - op1); break;
 			}
